@@ -178,11 +178,10 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-ExecStartPre=chown -R xahaud:xahaud /opt/xahaud
 $EXEC_COMMAND
 Restart=on-failure
 User=$USER
-Group=$USER
+Group=root
 LimitNOFILE=65536
 
 [Install]
