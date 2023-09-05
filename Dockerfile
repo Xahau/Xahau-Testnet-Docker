@@ -19,6 +19,7 @@ COPY xahaud-install-update.sh /xahaud-install-update.sh
 
 RUN chmod +x /xahaud-install-update.sh && \
     /bin/bash /xahaud-install-update.sh && \
-    systemctl enable xahaud.service
+    systemctl enable xahaud.service && \
+    chown -R xahaud:xahaud /opt/xahaud/db
 
 EXPOSE 22 80 8080 21338 15005 16005 16006 16007

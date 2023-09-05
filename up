@@ -28,7 +28,7 @@ docker run \
     --privileged \
     --cgroupns=host -v /sys/fs/cgroup:/sys/fs/cgroup:rw \
     --name xahaud-testnet \
-    -p 2222:22 \
+    -p 22222:22 \
     -p 21338:21338 \
     -p 15005:15005 \
     -p 16005:16005 \
