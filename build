@@ -1,0 +1,73 @@
+#!/bin/bash
+
+echo ""
+echo '                   $$\                                 $$\ '
+echo '                   $$ |                                $$ |'
+echo '$$\   $$\ $$$$$$\  $$$$$$$\   $$$$$$\  $$\   $$\  $$$$$$$ |'
+echo '\$$\ $$  |\____$$\ $$  __$$\  \____$$\ $$ |  $$ |$$  __$$ |'
+echo ' \$$$$  / $$$$$$$ |$$ |  $$ | $$$$$$$ |$$ |  $$ |$$ /  $$ |'
+echo ' $$  $$< $$  __$$ |$$ |  $$ |$$  __$$ |$$ |  $$ |$$ |  $$ |'
+echo '$$  /\$$\\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$  |\$$$$$$$ |'
+echo '\__/  \__|\_______|\__|  \__| \_______| \______/  \_______|'
+echo ""
+echo ">>> TESTNET EDITION"
+echo ">>> HOOKS V3 TESTNET WITH PROOF OF BURN GENERATION"
+echo ""
+echo ">>> NETWORK ID: [ 21338 ]"
+echo ""
+
+self() {
+  DIR=$( cd "$( dirname "$0" )/" && pwd)
+  echo $DIR
+}
+
+log() {
+  echo $1  
+}
+
+PROGRAM=xahaud
+RELEASE_TYPE="release"
+URL="https://yidczxh.dlvr.cloud/"
+DL_DIR=$(self)/./store/downloads
+
+# Get the latest version
+echo "Checking the latest $PROGRAM release:"
+filenames="pob"
+latest_file=""
+
+# If files were found, sort them and download the latest one if it hasn't already been downloaded
+if [[ -n $filenames ]]; then
+  latest_file=$(echo "${filenames}" | sort -r | head -n 1)
+  log "$latest_file is the latest available for download"
+  if [[ -f "$DL_DIR/$latest_file" ]]; then
+    log "File already downloaded: $latest_file"
+  else
+    rm -f $DL_DIR/*-$RELEASE_TYPE+*
+    log "Downloading latest file: ${latest_file} to $DL_DIR"
+    curl --fail "${URL}${latest_file}" -o "$DL_DIR/$latest_file"
+    chmod +x "$DL_DIR/$latest_file"
+  fi
+else
+  log "No files of type $RELEASE_TYPE found"
+  exit 1
+fi
+
+log "Copy latest install script"
+cp $(self)/../xahaud-install-update.sh ./
+cp $(self)/../utilities/validator-keys ./
+
+TAG="testnet"
+
+log "Remove existing image"
+docker rmi -f xahaud:$TAG
+
+log "Building image"
+#docker build --tag xahaud:$TAG $(self)/.
+docker build --no-cache --tag xahaud:$TAG $(self)/.
+# docker tag xahaud:$TAG xahaud:latest
+
+log "Cleanup"
+rm $(self)/./xahaud-install-update.sh
+rm $(self)/./validator-keys
+
+log "Done, you can now run $(self)/up"
