@@ -14,7 +14,7 @@ ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile && rm -f /run/nologin
 
 ADD store /opt/xahaud
-ADD validator-keys /bin/
+ADD utilities/validator-keys /bin/
 COPY xahaud-install-update.sh /xahaud-install-update.sh
 
 RUN chmod +x /xahaud-install-update.sh && \
