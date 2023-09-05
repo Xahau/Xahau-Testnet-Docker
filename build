@@ -61,8 +61,8 @@ else
 fi
 
 log "Copy latest install script"
-cp $(self)/../xahaud-install-update.sh ./
-cp $(self)/../utilities/validator-keys ./
+cp $(self)/xahaud-install-update.sh ./
+cp $(self)/utilities/validator-keys ./
 
 TAG="testnet"
 
