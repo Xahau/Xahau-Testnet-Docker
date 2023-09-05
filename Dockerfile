@@ -1,6 +1,6 @@
 FROM jrei/systemd-ubuntu:22.04
 
-RUN --security=insecure apt-get update && systemctl enable systemd-user-sessions.service && \
+RUN apt-get update && systemctl enable systemd-user-sessions.service && \
     apt-get update -y && apt-get upgrade -y && apt-get dist-upgrade -y && \
     apt-get install -y jq sudo wget gpg curl nano htop ucommon-utils openssh-server jq inetutils-ping passwd && \
     mkdir /var/run/sshd && sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
