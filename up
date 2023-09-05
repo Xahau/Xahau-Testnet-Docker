@@ -11,7 +11,7 @@ echo '$$  /\$$\\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$  |\$$$$$$$ |'
 echo '\__/  \__|\_______|\__|  \__| \_______| \______/  \_______|'
 echo ""
 echo ">>> TESTNET EDITION"
-echo ">>> HOOKS V3 TESTNET WITH PROOF OF BURN GENERATION"
+echo ">>> HOOKS V3 TESTNET"
 echo ""
 echo ">>> NETWORK ID: [ 21338 ]"
 echo ""
@@ -37,6 +37,12 @@ docker run \
     -v $(self)/./store/db:/opt/xahaud/db \
     -v $(self)/./store/etc:/opt/xahaud/etc \
     -v $(self)/./store/log:/opt/xahaud/log \
-    -v $(self)/./store/xpop:/opt/xahaud/xpop \
     -v $(self)/./store/ssh/authorized_keys:/root/.ssh/authorized_keys \
     xahaud:testnet
+
+echo ""
+echo "Xahaud running binary version:"
+docker exec xahaud-testnet sh -c 'cat /opt/xahaud/bin/xahaud|md5sum'|cut -d " " -f 1
+echo "Xahaud runnin version string (build_version):"
+docker exec xahaud-testnet xahaud -q server_info|grep build_version|cut -d '"' -f 4
+echo ""

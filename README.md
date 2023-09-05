@@ -1,6 +1,6 @@
 # Xahaud Docker Container
 
-Docker container to run a Xahau node on Testnet (Hooks V3 testnet) with Proof of Burn xPOP storing.
+Docker container to run a Xahau node on Testnet (Hooks V3 testnet) with Proof of Burn xPOP import.
 
 ## XAHAU TESTNET, NETWORK ID 21338
 
@@ -15,7 +15,7 @@ $$  /\$$\\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$  |\$$$$$$$ |
 \__/  \__|\_______|\__|  \__| \_______| \______/  \_______|
 
 >>> TESTNET EDITION
->>> HOOKS V3 TESTNET WITH PROOF OF BURN GENERATION
+>>> HOOKS V3 TESTNET WITH PROOF OF BURN IMPORT
 
 >>> NETWORK ID: [ 21338 ]
 ```
@@ -83,6 +83,18 @@ To check the peer connections:
 ```bash
 # docker exec {container} {binary} {cliargs} {cliopts} | grep {string to match}
 docker exec xahaud-testnet xahaud -q peers|grep address
+```
+
+To check the live Xahaud logs:
+
+```bash
+# docker exec {container} {binary} {cliargs} {cliopts} | grep {string to match}
+docker exec xahaud-testnet tail -f /opt/xahaud/log/debug.log
+```
+
+To monitor sync status (exit with `CTRL-C`):
+```bash
+watch 'docker exec xahaud-testnet xahaud -q server_info | grep complete_ledgers'
 ```
 
 To start/stop/restart `xahaud`:
