@@ -60,10 +60,6 @@ else
   exit 1
 fi
 
-log "Copy latest install script"
-cp $(self)/xahaud-install-update.sh ./
-cp $(self)/utilities/validator-keys ./
-
 TAG="testnet"
 
 log "Remove existing image"
@@ -73,9 +69,5 @@ log "Building image"
 #docker build --tag xahaud:$TAG $(self)/.
 docker build --no-cache --tag xahaud:$TAG $(self)/.
 # docker tag xahaud:$TAG xahaud:latest
-
-log "Cleanup"
-rm $(self)/./xahaud-install-update.sh
-rm $(self)/./validator-keys
 
 log "Done, you can now run $(self)/up"
