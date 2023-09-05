@@ -31,7 +31,7 @@ else
 fi
 
 # For systemd
-EXEC_COMMAND="ExecStart=chown -R xahaud:xahaud /opt/xahaud/db && $BIN_DIR/$PROGRAM $QUORUM --net --silent --conf $ETC_DIR/$PROGRAM.cfg"
+EXEC_COMMAND="ExecStart=$BIN_DIR/$PROGRAM $QUORUM --net --silent --conf $ETC_DIR/$PROGRAM.cfg"
 
 # Function to log messages to the log file
 log() {
@@ -178,6 +178,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
+ExecStartPre=chown -R xahaud:xahaud /opt/xahaud
 $EXEC_COMMAND
 Restart=on-failure
 User=$USER
