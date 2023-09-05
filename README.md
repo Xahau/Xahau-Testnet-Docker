@@ -2,6 +2,14 @@
 
 Docker container to run a Xahau node on Testnet (Hooks V3 testnet) with Proof of Burn xPOP import.
 
+Plays nice with this XRPL Testnet node for XPOP storing on B2M:
+https://github.com/Xahau/XRPL-XPOP-Testnet-Docker
+
+And plays nice with this B2M sample code:
+https://gist.github.com/WietseWind/cd8a7a8c88f218fe7b768f59a665685d
+
+---
+
 ## XAHAU TESTNET, NETWORK ID 21338
 
 ```
