@@ -28,7 +28,7 @@ $$  /\$$\\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$  |\$$$$$$$ |
 >>> NETWORK ID: [ 21338 ]
 ```
 
-### Buid:
+### Build:
 
 WARNING!
 - This will remove any existing image with the same `xahaud` release tag
