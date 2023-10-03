@@ -23,6 +23,9 @@ self(){
 
 docker rm -f xahaud-testnet
 
+# Ugly
+chmod -R 777 $(self)/./store
+
 docker run \
     -dit \
     --privileged \
