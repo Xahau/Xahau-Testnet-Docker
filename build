@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## PINNED TESTNET VERSION
-pinned_version="2023.7.12-dev+204"
+pinned_version="2023.9.25-dev+336"
 ## END PINNED TESTNET VERSION
 
 echo ""
