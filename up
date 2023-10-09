@@ -46,6 +46,6 @@ docker run \
 echo ""
 echo "Xahaud running binary version:"
 docker exec xahaud-testnet sh -c 'cat /opt/xahaud/bin/xahaud|md5sum'|cut -d " " -f 1
-echo "Xahaud runnin version string (build_version):"
+echo "Xahaud running version string (build_version):"
 docker exec xahaud-testnet xahaud -q server_info|grep build_version|cut -d '"' -f 4
 echo ""
