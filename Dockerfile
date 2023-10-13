@@ -1,4 +1,4 @@
-FROM jrei/systemd-ubuntu:22.04
+FROM --platform=linux/x86_64 jrei/systemd-ubuntu:22.04
 
 RUN apt-get update && systemctl enable systemd-user-sessions.service && \
     apt-get update -y && apt-get upgrade -y && apt-get dist-upgrade -y && \
