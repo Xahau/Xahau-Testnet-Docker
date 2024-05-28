@@ -209,7 +209,7 @@ ip_limit = 1024
 full
 
 [network_id]
-21337
+21338
 
 [server]
 port_rpc_admin_local
@@ -224,7 +224,7 @@ admin = 127.0.0.1
 protocol = http
 
 [port_peer]
-port = 21337
+port = 21338
 ip = 0.0.0.0
 protocol = peer
 
@@ -278,8 +278,25 @@ $VALIDATORS_FILE
 [peer_private]
 0
 
-[ips_fixed]
-bacab.alloy.ee 21337
+[ips]
+# TN4  nHDs6fHVnhb4ZbSFWF2dTTPHoZ6Rr39i2UfLotzgf8FKUi7iZdxx
+68.183.1.245 21338
+# TN5  nHUvgFxT8EGrXqQZ1rqMw67UtduefbaCHiVtVahk9RXDJP1g1mB4
+159.65.199.56 21338
+# TN6  nHU7Vn6co7xEFMBesV7qw7FXE8ucKrhVWQiYZB5oGyMhvqrnZrnJ
+139.59.98.59 21338
+# TN7  nHBoJCE3wPgkTcrNPMHyTJFQ2t77EyCAqcBRspFCpL6JhwCm94VZ
+65.108.232.251 21338
+# TN8  nHUVv4g47bFMySAZFUKVaXUYEmfiUExSoY4FzwXULNwJRzju4XnQ
+65.108.232.250 21338
+# TN9  nHBvr8avSFTz4TFxZvvi4rEJZZtyqE3J6KAAcVWVtifsE7edPM7q
+88.99.3.241 21338
+# TN10 nHUH3Z8TRU57zetHbEPr1ynyrJhxQCwrJvNjr4j1SMjYADyW1WWe
+88.99.4.45 21338
+# TN11 nHBdSXv3DhYJVXUppMLpCwJWDFVQyFdZrbMxeh8CFiBEvfTCy3Uh
+185.239.60.22 21311
+# TN12 nHUJbfgaAtkbuAdtrqCDerP99PcprcpyqakZTsYpkQdb67aKKyJn
+185.239.60.22 21312
 
 # Add validator token stanza etc after this. Don't forget to restart 
   
@@ -289,11 +306,28 @@ fi
 if [[ ! -f $VALIDATORS_FILE ]]; then
   log "Creating $VALIDATORS_FILE..."
   cat << EOF > "$VALIDATORS_FILE"
-[validator_list_sites]
-https://vl.xahau.org
+[validators]
+# TN4
+nHDs6fHVnhb4ZbSFWF2dTTPHoZ6Rr39i2UfLotzgf8FKUi7iZdxx
+# TN5
+nHUvgFxT8EGrXqQZ1rqMw67UtduefbaCHiVtVahk9RXDJP1g1mB4
+# TN6
+nHU7Vn6co7xEFMBesV7qw7FXE8ucKrhVWQiYZB5oGyMhvqrnZrnJ
+# TN7
+nHBoJCE3wPgkTcrNPMHyTJFQ2t77EyCAqcBRspFCpL6JhwCm94VZ
+# TN8
+nHUVv4g47bFMySAZFUKVaXUYEmfiUExSoY4FzwXULNwJRzju4XnQ
+# TN9
+nHBvr8avSFTz4TFxZvvi4rEJZZtyqE3J6KAAcVWVtifsE7edPM7q
+# TN10
+nHUH3Z8TRU57zetHbEPr1ynyrJhxQCwrJvNjr4j1SMjYADyW1WWe
+# TN11
+nHBdSXv3DhYJVXUppMLpCwJWDFVQyFdZrbMxeh8CFiBEvfTCy3Uh
+# TN12
+nHUJbfgaAtkbuAdtrqCDerP99PcprcpyqakZTsYpkQdb67aKKyJn
 
-[validator_list_keys]
-EDA46E9C39B1389894E690E58914DC1029602870370A0993E5B87C4A24EAF4A8E8
+[import_vl_keys]
+ED264807102805220DA0F312E71FC2C69E1552C9C5790F6C25E3729DEB573D5860
 EOF
 
 fi
