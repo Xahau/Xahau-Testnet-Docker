@@ -129,7 +129,7 @@ if [[ "$FIRST_RUN" == true ]]; then
 fi
 
 log "Fetching latest version of $PROGRAM..."
-filenames=$(curl --silent "${URL}" | grep -Eo '>[^<]+<' | sed -e 's/^>//' -e 's/<$//' | grep -E '^\S+\+[0-9]{2,3}$' | grep -E $RELEASE_TYPE)
+filenames=$(curl --silent "${URL}" | grep -Eo '>[^<]+<' | sed -e 's/^>//' -e 's/<$//' | grep -E '^\S+\+[0-9]{2,4}$' | grep -E $RELEASE_TYPE)
 
 # If files were found, sort them and download the latest one if it hasn't already been downloaded
 if [[ -n $filenames ]]; then
